@@ -84,3 +84,32 @@ def delete_user(user_id):
     db.session.delete(user)
     db.session.commit()
     return jsonify({"message": f"User {user_id} deleted"})
+
+
+@user_bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if not data or not data.get('username') or not data.get('password'):
+        return jsonify({'message': 'Username and password are required'}), 400
+
+    username = data['username']
+    password = data['password']
+
+    # Find user by username (or email)
+    user = User.query.filter_by(username=username).first()
+
+    if not user or not bcrypt.check_password_hash(user.password, password):
+        return jsonify({'message': 'Invalid credentials'}), 401
+
+    # You can generate a token here or start a session if needed
+    # Example response:
+    return jsonify({
+        'message': 'Login successful',
+        'user': {
+            'id': user.id,
+            'name': user.name,
+            'email': user.email,
+            'role': user.role
+        },
+        # 'token': 'JWT or session ID here'
+    })

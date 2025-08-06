@@ -1,5 +1,8 @@
 <template>
-  <v-container>
+  <div>
+    <custom-title>
+      Sale Report
+    </custom-title>
     <v-row class="mb-4">
       <v-col cols="6">
         <v-row>
@@ -69,7 +72,7 @@
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script setup>

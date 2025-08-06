@@ -14,7 +14,12 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User {self.name} - {self.role}>"
+        
+    def set_password(self, raw_password):
+        self.password = bcrypt.generate_password_hash(raw_password).decode('utf-8')
 
+    def check_password(self, raw_password):
+        return bcrypt.check_password_hash(self.password, raw_password)
 
 # 💊 Medication model
 class Medication(db.Model):

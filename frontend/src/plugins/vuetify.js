@@ -23,4 +23,11 @@ export default createVuetify({
   theme: {
     defaultTheme: "light",
   },
+  defaults: {
+    VBtn: {
+      color: "primary",     // Default button color
+      variant: "flat",      // Default variant (e.g. flat, outlined, text)
+      rounded: "md",        // Default rounded corners (xs, sm, md, lg, xl)
+    },
+  },
 });

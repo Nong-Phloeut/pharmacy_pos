@@ -1,17 +1,17 @@
 
 <!-- views/PharmacistsView.vue -->
 <template>
-  <v-container>
-    <v-row class="mb-4">
-      <v-col cols="12" class="d-flex justify-space-between align-center">
-        <h1 class="text-h4 font-weight-bold">Pharmacists</h1>
-        <v-btn color="primary" @click="openDialog('add')">
+  <div>
+    <custom-title>
+      Pharmacists
+      <template #right>
+          <v-btn color="primary" @click="openDialog('add')">
           <v-icon left>mdi-plus</v-icon>
           Add Pharmacist
         </v-btn>
-      </v-col>
-    </v-row>
-
+      </template>
+    </custom-title>
+    
     <v-row>
       <v-col cols="12">
         <v-card>
@@ -36,7 +36,7 @@
     <!-- Add/Edit Pharmacist Dialog -->
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
-        <v-card-title class="text-h5">{{ formTitle }} Pharmacist</v-card-title>
+        <v-card-title class="text-h5 bg-primary">{{ formTitle }} Pharmacist</v-card-title>
         <v-card-text>
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field
@@ -67,7 +67,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-container>
+  </div>
 </template>
 
 <script setup>
